@@ -21,6 +21,7 @@ app.use('/venta', ventaRouter);
 app.use('/detalleVenta', detalleVentaRouter);
 app.use('/carrito', carritoRouter);
 
+// puerto trabajado
 const PORT = process.env.PORT || 3000;
 
 // conectar con mongo
