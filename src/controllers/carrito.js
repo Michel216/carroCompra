@@ -8,21 +8,15 @@ const carritoController = {
       const carritoCliente = await Carrito.find({ cliente: clienteId });
       res.json(carritoCliente);
     } catch (error) {
-      console.error(`Error al obtener el carrito del cliente con ID ${clienteId}:`, error);
-      res.status(500).json({ error: `Error al obtener el carrito del cliente con ID ${clienteId}` });
+      console.error(`Error al obtener el carrito `, error);
+      res.status(500).json({ error: `Error al obtener el carrito del cliente ` });
     }
   },
 
   insertar: async (req, res) => {
     const { cliente, producto, valor, cantidad, descuento } = req.body;
     try {
-      const nuevoItemCarrito = await Carrito.create({
-        cliente,
-        producto,
-        valor,
-        cantidad,
-        descuento,
-      });
+      const nuevoItemCarrito = await Carrito.create({cliente,producto,valor,cantidad,descuento,});
       res.json(nuevoItemCarrito);
     } catch (error) {
       console.error('Error al insertar el item en el carrito:', error);
@@ -39,8 +33,8 @@ const carritoController = {
       }
       res.json({ message: 'Item del carrito eliminado correctamente' });
     } catch (error) {
-      console.error(`Error al eliminar el item del carrito con ID ${itemId}:`, error);
-      res.status(500).json({ error: `Error al eliminar el item del carrito con ID ${itemId}` });
+      console.error(`Error al eliminar el item `, error);
+      res.status(500).json({ error: `Error al eliminar el item ` });
     }
   },
 
@@ -54,8 +48,8 @@ const carritoController = {
       }
       res.json(itemActualizado);
     } catch (error) {
-      console.error(`Error al modificar el item del carrito con ID ${itemId}:`, error);
-      res.status(500).json({ error: `Error al modificar el item del carrito con ID ${itemId}` });
+      console.error(`Error al modificar el item `, error);
+      res.status(500).json({ error: `Error al modificar el item ` });
     }
   },
 };
